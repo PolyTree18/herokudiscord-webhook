@@ -92,7 +92,7 @@ def heroku2Discord(eJson):
         },
         "title": title,
         "url": f"https://{eJson['data:app:name']}.herokuapp.com",
-        "description":,
+        "description": description,
         "fields": fields,
         "timestamp": eJson['created_at'],
     }
