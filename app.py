@@ -88,9 +88,9 @@ def heroku2Discord(eJson):
             "name": author,
             "avatar_url": "https://images-ext-2.discordapp.net/external/Hne_YTkzyBimBDtCJs00yAWfWgLka7VnbbPqcrmFqxM/%3Fv%3D4/https/avatars.githubusercontent.com/u/67499264",
         },
-        "title": title,
+        "title": title.replace('dyno', 'bot'),
         "url": f"https://{eJson['data:app:name']}.herokuapp.com",
-        "description": description,
+        "description": description.replace('dyno', 'bot'),
         "fields": fields,
         "timestamp": eJson['created_at'],
     }
