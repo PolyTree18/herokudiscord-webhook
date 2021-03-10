@@ -1,6 +1,8 @@
 import colorsys
 import hashlib
 
+import os, sys
+
 import requests
 from flask import Flask, request
 
