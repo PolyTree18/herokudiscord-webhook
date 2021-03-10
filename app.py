@@ -64,6 +64,10 @@ def heroku2Discord(eJson):
     # detail for each event
     if resource == 'dyno':
         title += f" {eJson['data:state'].replace('dyno', 'bot')}"
+        try:
+            title = title.replace('dyno', 'bot')
+        except:
+            pass
 
     elif resource == 'build':
         status = eJson['data:status']
