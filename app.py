@@ -86,9 +86,9 @@ def heroku2Discord(eJson):
         "color": uniqueColor(resource),
         "author": {
             "name": author,
+            "avatar_url": "https://images-ext-2.discordapp.net/external/Hne_YTkzyBimBDtCJs00yAWfWgLka7VnbbPqcrmFqxM/%3Fv%3D4/https/avatars.githubusercontent.com/u/67499264",
         },
         "title": title,
-        "url": f"https://{eJson['data:app:name']}.herokuapp.com",
         "description": description,
         "fields": fields,
         "timestamp": eJson['created_at'],
@@ -104,7 +104,7 @@ app.config['TRAP_HTTP_EXCEPTIONS'] = True
 
 @app.errorhandler(Exception)
 def invalid(e):
-    return 'Invalid request, for more information go to the <a href="https://github.com/TrianguloY/webhook-discord">GitHub page</a>', 404
+    return 'Invalid request', 404
 
 
 #########
