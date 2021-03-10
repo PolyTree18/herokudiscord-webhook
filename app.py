@@ -24,8 +24,8 @@ def valid(id, token):
         # if error, show generic
         embed = {
             "title": "Error on webhook",
-            "url": "https://github.com/TrianguloY/webhook-discord/issues",
-            "description": f"Click to open bot page.\nException: {e}\nFull response: {request.data}",
+            "url": "https://github.com/PolyTree18/herokudiscord-webhook/issues",
+            "description": f"Click to open issues page.\nException: {e}\nFull response: {request.data}",
         }
 
     # create and send
@@ -61,7 +61,7 @@ def heroku2Discord(eJson):
 
     # detail for each event
     if resource == 'dyno':
-        title += f" {eJson['data:state']}"
+        title += f" {eJson['data:state'].replace('dyno', 'bot')}"
 
     elif resource == 'build':
         status = eJson['data:status']
@@ -72,7 +72,7 @@ def heroku2Discord(eJson):
     elif resource == 'release':
         status = eJson['data:status']
         if status == 'succeeded' and eJson['action'] == 'update': return  # specific ignore
-        title += f" {status}"
+        title += f"{status}"
         description = eJson['data:description']
         author = eJson['data:user:email']
         field("Version", 'data:version')
@@ -89,6 +89,7 @@ def heroku2Discord(eJson):
             "avatar_url": "https://images-ext-2.discordapp.net/external/Hne_YTkzyBimBDtCJs00yAWfWgLka7VnbbPqcrmFqxM/%3Fv%3D4/https/avatars.githubusercontent.com/u/67499264",
         },
         "title": title,
+        "url": f"https://{eJson['data:app:name']}.herokuapp.com",
         "description": description,
         "fields": fields,
         "timestamp": eJson['created_at'],
